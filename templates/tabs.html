@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+ <style>
+  body {
+		font-family: "Lato", sans-serif;
+		min-width: 1024px;
+	}
+  ul.tab{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  ul.tab li {float: left;}
+  ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  ul.tab li a:hover {background-color: #ddd;}
+  ul.tab li a:focus, .active {background-color: #ccc;}
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+     padding: 5px;
+  }
+ </style>
+ <body>
+  {% extends "base.html" %}
+  {% block content %}
+ <ul class="tab">
+    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'First')">About</a></li>
+    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Second')">Search</a></li>
+    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Third')">Contacts</a></li>
+  </ul>
+  <div id="First" class="tabcontent">
+    <h3>About</h3>
+    <p style="font-family: 'Arial', sans-serif; word-wrap: break-word; line-height:25px">
+	The <span style="font-style:italic;"> Educational Times</span> was a journal published in the 19th century that addressed a wide variety of topics, the main focus of this site being the
+		mathematical questions and their answers. Later the questions and answers that appeared in the Educational Times were published in a different 
+		journal entitiled <span style="font-style:italic;">Mathematical questions with their solutions, from the "Educational Times"</span>, 
+		which is referred to as MQ. The intent for this page is to create an online tool to search data about these mathematical questions
+		and their solutions, data that was collected by Dr. Jim Tattersall of Providence College. The data included here in the Search tab contains 
+		the question number, the volume in which the problem we published, the name of the person who proposed it, the names of the solvers (if any), 
+		the volume(s) the solution(s) were published in, the dates the volume(s) of the solutions were published, the volume of MQ that the problems and 
+		their solutions appear, and a number that refers to the question type. 
+		<br>
+		Please refer to the Contacts tab for any questions/concerns. 
+		<br>
+		(Note: The names may often be pseudonyms)
+	</p>
+  </div>
+  <div id="Second" class="tabcontent">
+    <h3>Search bar</h3>
+    <p><input type ="search" value="search"><input type = "submit" value = "search" /></p>
+    <table style = "width:100%;" id = "mytab1">
+      {% for key, value in lists.iteritems() %}
+         <tr>
+            <th> {{ key }} </th>
+            <td> {{ value }} </td>
+         </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div id="Third" class="tabcontent">
+    <h3>Contacts</h3>
+    <p>Grant Brown</p>
+    <p>Logan Schmidt</p>
+  </div>
+  <script>
+    function openTab(evt, name) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace("active", "");
+      }
+      document.getElementById(name).style.display = "block";
+      evt.currentTarget.className += "active";
+   }
+  </script>
+{% endblock %}
+</body>
+</html>
+         

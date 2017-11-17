@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+ <style>
+  body {
+		font-family: "Lato", sans-serif;
+		min-width: 1024px;
+  }
+
+  ul.tab {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     border: 1px solid #ccc;
+     background-color: #f1f1f1;
+  }
+
+  ul.tab li {float: left;}
+
+  ul.tab li a {
+     display: inline-block;
+     color: black;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+     transition: 0.3s;
+     font-size: 17px;
+  }
+
+  ul.tab li a:hover {
+     background-color: #ddd;
+  }
+
+  ul.tab li a:focus, .active {
+     background-color: #ccc;
+  }
+  
+  .tabcontent {
+     display: none;
+     padding: 6px 12px;
+     border: 1px solid #ccc;
+     border-top: none;
+  }
+ </style>
+
+ <body>
+
+    <ul class = "tab">
+      <li><a href = "javascript:void(0)" class="tablinks"
+         onclick = "openTab(event, 'First')">About</a></li>
+      <li><a href = "javascript:void(0)" class="tablinks"
+         onclick = "openTab(event, 'Second')">Search</a></li>
+      <li><a href = "javascript:void(0)" class="tablinks"
+         onclick = "openTab(event, 'Third')">Contacts</a></li>
+    </ul>
+
+    <div id = "First" class = "tabcontent">
+      <h3>About</h3>
+      <p>Stuff about this project.</p>
+    </div>
+
+    <div id = "Second" class = "tabcontent">
+      <h3>Search bar</h3>
+      <p><input type = "search" value = "search"><input type = "submit" value = "search" /></p>
+      <table style = "width:100%" id="mytab1">
+        <tr>
+          <th align="right">NUM</th>
+          <th align="right">ET VOL</th>
+          <th align="right">DATE</th>
+          <th align="right">PROPOSER</th>
+          <th align="right">SOLVERS</th>
+          <th align="right">ET VOL</th>
+          <th align="right">DATE</th>
+          <th align="right">MQ VOL</th>
+          <th align="right">TYPE</th>
+        </tr>
+       <tr>  
+        <td align="right">1</td> 
+        <td align="right">1.1</td> 
+        <td align="right">2/1/17</td> 
+        <td align="right">Logan Schmidt</td> 
+        <td align="right"> </td>
+	<td align="right">1.2</td> 
+        <td align="right">2/2/17</td> 
+        <td align="right">1.3</td> 
+        <td align="right">4</td>
+      </tr>
+     </table>    
+    </div>  
+    
+    <div id = "Third" class = "tabcontent">
+      <h3>Contacts</h3>
+      <p>Grant Brown</p>
+      <p>Logan Schmidt</p>
+    </div>
+
+     
+            
+    <script>
+      function openTab(evt, name){
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for(i=0;i<tabcontent.length; i++){
+	  tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for(i=0;i<tablinks.length; i++){
+	  tablinks[i].className = tablinks[i].className.replace("active","");;
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+  </body>
+</html>
+

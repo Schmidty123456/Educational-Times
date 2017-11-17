@@ -1,0 +1,63 @@
+<html>
+	<style>
+		body {
+			font-family: "Lato", sans-serif;
+			<!--min-width: 1024px;-->
+		}
+		.whole{
+			max-width: 920px;
+			<!--padding: 10px 0px;-->
+			background: #f4f7f8;
+			margin: 10px;
+			padding: 20px;
+			border-radius: 8px;
+			background-color: #cccccc;
+			box-shadow: 0px 0px 2px 2px #888888;	
+		}
+		.form-group{
+			max-width: 10000px;
+			padding: 10px 10px 10px 10px;
+			font: 13px Arial, Helvetica, sans-serif;
+		}
+		.form-group-2{
+			max-width: 10000px;
+			padding: 1px 10px 10px 10px;
+			font: 13px Arial, Helvetica, sans-serif;
+		}
+		.form-group label{
+			display: inline-block;
+			width: 480px;
+			text-align: left;
+			<--margin: 10px 10px 10px 10px;-->
+		}
+		.form-group-2 label{
+			display inline-block;
+			width: 175px;
+			padding: 10px, 10px, 10px, 10px;
+			text-align: left;
+		}
+		.form-group-2 input{
+			margin-right: 92px;
+		}	
+		input{
+			width: 18%;
+		}
+		.ninety-percent{
+			margin: auto;
+			width: 90%;
+		}
+	</style>
+	<body>
+		{% extends "base.html" %}
+		{% block content %}
+		<h3>Statistics</h3>
+		<div class="whole table-responsive ninety-percent">
+			{{ div_placeholder }}
+			{{ pies }} 
+			{{ known }}
+		</div>
+		
+		
+	{% endblock %}
+	</body>
+</html>

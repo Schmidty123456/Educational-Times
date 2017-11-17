@@ -1,0 +1,635 @@
+<!doctype html>
+<html>
+	<style>
+	 
+		body {
+			font-family: "Lato", sans-serif;
+			<!--min-width: 1024px;-->
+		}
+		ul.tab{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #cccccc;
+			box-shadow: 0px -2px 10px #888888;
+		}
+		
+		.form-group{
+			max-width: 10000px;
+			padding: 10px 10px 10px 10px;
+			font: 13px Arial, Helvetica, sans-serif;
+		}
+		.form-group-2{
+			max-width: 10000px;
+			padding: 1px 10px 10px 10px;
+			font: 13px Arial, Helvetica, sans-serif;
+		}
+		.form-group label{
+			display: inline-block;
+			width: 480px;
+			text-align: left;
+			<--margin: 10px 10px 10px 10px;-->
+		}
+		.form-group-2 label{
+			display inline-block;
+			width: 175px;
+			padding: 10px, 10px, 10px, 10px;
+			text-align: left;
+		}
+		.form-group-2 input{
+			margin-right: 92px;
+		}	
+		input{
+			width: 18%;
+		}
+		.ninety-percent{
+			width: 90%;
+		}
+		
+		ul.tab li {float: left;}
+		ul.tab li a {
+			display: inline-block;
+			color: black;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+		
+		ul.tab li a:hover {background-color: #ddd;}
+		ul.tab li a:focus, .active {background-color: #ccc;}
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+			background-color: #e6e6e6;
+			box-shadow: 0px 5px 10px #888888;
+		}
+		
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 5px;
+		}
+		
+		.tooltip{
+			position: relative;
+			display: inline-block;
+			border-bottom: 1px dotted black;
+		}
+
+		.tooltip .tooltiptext{
+			visibility: hidden;
+			width: 120px;
+			background-color: black;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 5px 0;
+			position: absolute;
+			z-index: 1;
+			bottom: 100%;
+			left: 50%;
+			margin-left: -60px;
+		}
+		
+		.tooltip:hover .tooltiptext{
+			visibility: visible;
+		}
+		
+		.display-label {
+			padding-left: 20px;
+		}
+	  
+		#downloadbtn {
+			color: blue;
+			border-radius: 12px;
+		}
+		
+		.ninety-percent{
+			width: 90%;
+		}
+	 </style>
+	 <body>
+		
+		{% extends "base.html" %}
+		{% block content %}
+		<!--https://educational-times.herokuapp.com//journals/advanced-->
+		<ul class="tab ninety-percent">
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'First')">About</a></li>
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Second')" id="defaultOpen"> Basic Search</a></li>
+			<li><a href="javascript:void(0)" class="tablinks"  onclick="openTab(event, 'ADV')">Advanced Search</a></li>
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Fifth')">Question Types</a></li>
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openStat()">Statistics</a></li>
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Third')">Contacts</a></li>
+
+		</ul>
+		
+		<div id="First" class="tabcontent ninety-percent">
+			<h3>About</h3>
+			<p style="font-family: 'Arial', sans-serif; word-wrap: break-word; line-height:25px">
+				The <span style="font-style:italic;">Educational Times</span> was a British journal published in the nineteenth century that addressed a wide variety 
+				of topics including a section in which readers can propose mathematical questions and submit answers to the questions that have been submitted. The 
+				mathematical questions and answers that appeared in the Educational Times were later extracted, reorganized (so that a question and its solutions are 
+				together), and published in a different journal entitled <span style="font-style:italic;">Mathematical questions with their solutions, from the 
+				"Educational Times"</span>; we refer to this later journal as MQ. Dr. Jim Tattersall of Providence College, Rhode Island, USA then created a 
+				spreadsheet of the meta-data about these questions and answers. The meta-data in his spreadsheet includes for each mathematical question submitted to 
+				the Educational Times a single row that contains:
+				<br>
+				<br>
+				<span class="display-label">1) the question identifier (all the questions submitted have an assigned number in chronological order).</span>
+				<br>
+				<span class="display-label">2) the name of the proposer</span>
+				<br>
+				<span class="display-label">3) the date and volume of the issue of the Education Times in which the proposal of the question appears</span>
+				<br>
+				<span class="display-label">4) the names of each solver of the question</span>
+				<br>
+				<span class="display-label">5) the dates and volumes of the issues of the Educational Times in which solvers of the question submit their solutions</span>
+				<br>
+				<span class="display-label">6) the corresponding volumes in MQ of the proposal of the question and of the solutions to the question</span>
+				<br>
+				<span class="display-label">7) the question type (that is, the category within mathematics that the question resides)</span>
+				<br>
+				<br>
+				The intent for this website is to provide an online tool to search the meta-data contained in the spreadsheet that Dr. Tattersall developed.
+				<br>
+				<br>
+				<h3>Website Developers</h3>
+				
+				Grant Brown, Computer Science major, Western Carolina University, Cullowhee, NC, USA
+				<br>
+				Logan Schmidt, Computer Science major, Western Carolina University, Cullowhee, NC, USA
+				<br>
+				<br>
+				<h3>Faculty Supervisor</h3>	
+				
+				Dr. Mark A. Holliday, Department of Mathematics and Computer Science, Western Carolina University, Cullowhee, NC, USA
+				<br>
+				<br>
+				<h3>Faculty Consultant</h3>
+				
+				Dr. Sloan Despeaux, Department of Mathematics and Computer Science, Western Carolina University, Cullowhee, NC, USA
+				<br>
+				<br>
+				<br>
+				Number of Authors of Proposed Questions: {{ authors }}
+				<br>
+				Number of Questions Proposed: {{ solvers }}</p>
+			
+		</div>
+		
+		<div id="Second" style="width:90%;" class="tabcontent ninety-percent table-responsive">
+			<h3>Basic Search</h3>
+			
+			<p>
+				<input type="search" id="mySearch" placeholder="Search">
+				<input type = "button" id="searchButton" value="Search" onclick="search()">
+			</p>
+			
+			<p>   
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/A">A </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/B">B </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/C">C </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/D">D </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/E">E </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/F">F </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/G">G </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/H">H </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/I">I </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/J">J </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/K">K </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/L">L </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/M">M </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/N">N </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/O">O </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/P">P </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/Q">Q </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/R">R </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/S">S </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/T">T </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/U">U </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/V">V </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/W">W </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/X">X </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/Y">Y </a>
+			    <a href="https://educational-times.herokuapp.com//journals/author/0/Z">Z</a>
+			</p>
+			
+			<table  id = "mytab1" class="table table-striped">
+				<tr>
+					<th style="text-align:center" title="Question Identifier">ID</th>
+					<th style="text-align:center" title="Proposer">AUTHOR: PROPOSER</th>
+					<th style="text-align:center" title="Volume in Educational Times">ET VOL</th>
+					<th style="text-align:center" title="Date of Volume in Educational Times">DATE</th>
+					<th style="text-align:center" title="Solvers">AUTHOR: SOLVERS</th>
+					<th style="text-align:center" title="Volume in Education Times of Solution">ET VOL</th>
+					<th style="text-align:center" title="Date of Volume in Educational Times of Solution">DATE</th>
+					<th style="text-align:center" title="Volume in Mathematical Questions of  Solution">MQ VOL</th>
+					<th style="text-align:center" title="Question Type">TYPE</th>
+				</tr>
+				
+				{% for list in lists %}
+				<tr>{% for element in list %}
+					<td align="right">{{element}}</td>
+					{% endfor %}
+				</tr>
+				{% else %}
+					<p>No data was found matching those critera.</p>
+				{% endfor %}
+			</table>
+
+			<p>Number of Authors of Proposed Questions: {{ authors }}</p>
+			<p>Number of Questions Proposed: {{ solvers }}</p>
+			
+			<u1 class="pager">
+				<li class="previous"><a onclick="past('{{ search }}','{{ bit }}', '{{ svalue  }}')">Previous</a>
+				<li class="next"><a onclick="next('{{ search }}','{{ bit }}', '{{ svalue  }}')">Next</a>
+			</u1>
+			
+			<div style="text-align: center">
+				<a class="btn btn-default" title="ETquery<Year>-<Month>-<Day>.<Hour>-<Minute><AM/PM>.csv" id ="downloadbtn" href="https://educational-times.herokuapp.com//journals/downloadablesw">Download Results</a>
+			</div>
+		
+		</div>
+		
+		<div id="ADV" style="padding-left:20px;" class="tabcontent ninety-percent">
+			<fieldset>
+				<form>
+					<div class="form-group">
+									<label for="number">
+											<span>Question identifier:</span></label>
+											<input type="number" class="form-control:" id="id"/>
+					</div>
+					<div class="form-group">
+									<label for="etvol">
+											<span>Volume of Educational Times question appeared in:</span></label>
+											<input type="number" class="form-control:" id="etvol"/>
+											to
+											<input type="number" class="form-control:" id="etvol2"/>
+					</div>
+					<div class="form-group">
+							<p>
+									<label for="etdate"> Date that volume of Educational Times was published:</label>
+									<input type="date" class="form-control:" id="etdate" min="1830-01-01">
+									 to
+									<input type="date" class="form-control:" id="etdate2" max="1900-01-01">
+							</p>
+					</div>
+					<div class="form-group-2">
+							<p>
+									<label for="proposer"> Proposer of question:</label>
+									<input type="text" class="form-control:" id="proposer" placeholder="J. Sylvester/j. sylvester">
+									<label for="solver"> Solver of question:</label>
+									<input type="text" class="form-control:" id="solver" placeholder="J. Sylvester/j. sylvester">
+							</p>
+					</div>
+					<div class="form-group">
+							<p>
+									<label for="solvol"> Volume of Educational Times that solution appeared in:</label>
+									<input type="number" class="form-control:" id="solvol">
+									 to
+									<input type="number" class="form-control:" id="solvol2">
+							</p>
+					</div>
+					<div class="form-group">
+							<p>
+									<label for="soldate"> Date that solution was published:</label>
+									<input type="date" class="form-control:" id="soldate" min="1830-01-01">
+									 to
+									<input type="date" class="form-control:" id="soldate2" max="1900-01-01">
+							</p>
+					</div>
+					<div class="form-group">
+							<p>
+									<label for="mqvol"> Volume of Mathematical Questions that question and answers appear in:</label>
+									<input type="number" class="form-control:" id="mqvol">
+									 to
+									<input type="number" class="form-control:" id="mqvol2">
+							</p>
+					</div>
+					<div class="form-group">
+									<label for="qtype">Question type:</label>
+									<input type="number" class="form-control:" id= "qtype">
+					</div>
+					<div class="form-group">
+									<label for="unsolved">Unsolved Question:</label>
+									<input type="checkbox" class="form-control:" id= "unsolved">
+					</div>
+				</form>
+			</fieldset>
+		
+			<button type = "submit" id="search" class="btn btn-default" onclick="advSearch()">Search</button>
+		</div>
+		
+		<div id="Third" class="tabcontent ninety-percent">
+
+			<h3>Contacts</h3>
+			<p>Dr. Sloan Despeaux, <a href="mailto:despeaux@wcu.edu">despeaux@wcu.edu</a></p>
+			<p>Dr. Mark Holliday, <a href="mailto:holliday@wcu.edu">holliday@wcu.edu</a></p>
+			
+
+		</div>
+		
+		<div id="Fifth" class="tabcontent ninety-percent">
+			<h3>Question Types</h3>
+			<ul class="sub">
+				<li>1 Arithmetic (mixture / Rate)</li>
+				<li>2 Algebra</li>
+				<li>3 Trigonometry</li>
+				<li>4 Plane Geometry & Analytic Geometry</li>
+				<li>5 Calculus </li>
+				<li>6 Analysis (Real & Complex)</li>
+				<li>7 Logic</li>
+				<li>8 Probability and Expectation</li>
+				<li>9 Number Theory</li>
+				<li>10 Combinatorics</li>
+				<li>11 Applied Mathematics / Physics</li>                                         
+				<li>12 Recreational Mathematics (Magic Squares, Chess)</li>
+				<li>13 Geometric Probability, Average value </li>
+				<li>14 Average Value / Average Distance</li>
+				<li>15 Optics</li>
+				<li>16 Electricity & Magnetism</li>
+				<li>17 Mechanics (Forces)/Statics/ Equilbrium / Velocity / Accel</li>
+				<li>18 Hydrostatics / Hydrodynamics / Gas Dynamics</li>
+				<li>19 Thermodynamics</li>
+				<li>21 Linear Algebra </li>
+				<li>22 Equations & Solving Equations</li>
+				<li>23 Abstract Algebra (Group Theory)</li>
+				<li>24 Polynomials / Invariants / Forms</li>
+				<li>25 Matrices and Determinants</li>
+				<li>26 Quaternians</li>
+				<li>31 Spherical Trigonometry</li>
+				<li>41 Triangle & Circle Geometry (Trilinear coordinates)</li>
+				<li>43 Projective Geometry / Vanishing Points </li>
+				<li>44 Non-Conic Curves & Locus/Envelopes </li>
+				<li>45 Conics (general)</li>
+				<li>46 3-Dimensional Geometry/Surfaces /Tetrahedra / Spheres</li>         
+				<li>47 Geometric Constructions</li>
+				<li>48 Conic Sections (parabolas, ellipses, hyperbolas)</li>
+				<li>51 Differential Equations / Orthogonal Trajectories</li>
+				<li>52 Calculus (Maxima Minima)</li>
+				<li>53 Calculus (Integrals)</li>
+				<li>61 Analysis (Sequences & Series)</li>
+				<li>62 Analysis (Inequalities)</li>
+				<li>63 Analysis (Approximation)</li>
+				<li>64 Difference Equations</li>
+				<li>71 Knot Theory</li>
+				<li>81 Statistics  </li>
+				<li>91 Philosophy</li>
+				<li>92 Astronomy</li>
+				<li>93 Glotonchronology</li>
+				<li>94 Calendar Problems</li>
+				<li>95 Partitions</li>
+				<li>96 Continued Fractions / Convergents</li>
+				<li>97 Voting</li>
+				<li>98 Set Theory / Topology / Graph Theory</li>
+				<li>99 Music Theory</li>
+			</ul>
+		</div>
+		
+		<head>
+						<script>
+				
+				function openStat(){
+					window.location.assign("https://educational-times.herokuapp.com//journals/statistics")
+				}
+					
+				function openTab(evt, name) {
+					var i, tabcontent, tablinks;
+					
+					tabcontent = document.getElementsByClassName("tabcontent");
+					for (i = 0; i < tabcontent.length; i++) {
+						tabcontent[i].style.display = "none";
+					}
+
+					tablinks = document.getElementsByClassName("tablinks");
+					for (i = 0; i < tablinks.length; i++) {
+						tablinks[i].className = tablinks[i].className.replace("active", "");
+					}
+					
+					document.getElementById(name).style.display = "block";
+					evt.currentTarget.className += "active";
+					links()
+				}
+				
+				var x = 0;
+				
+				function past(p,bit,svalue){
+					if(p == '' || p == 0)
+						p=0;
+					else
+						p--;
+					if(bit==1){
+						window.location.assign("https://educational-times.herokuapp.com//journals/author/" + p + '/' + svalue )
+					}else if (bit==2){
+						window.location.assign("https://educational-times.herokuapp.com//journals/tabs/" + p + '/' + svalue)
+					}else if (bit==3){
+						window.location.assign("https://educational-times.herokuapp.com//journals/tabs/" + p + '/' + svalue)
+					}else{
+						window.location.assign("https://educational-times.herokuapp.com//journals/tabs/" + p)
+					}
+				}
+				
+				function next(p,bit,svalue){
+					if(p == '')
+						p=1;
+					else
+						p++;
+					if(bit==1){
+						window.location.assign("https://educational-times.herokuapp.com//journals/author/" + p + '/' + svalue)
+					}
+					else if (bit==2){
+						 window.location.assign("https://educational-times.herokuapp.com//journals/tabs/" + p + '/' + svalue)
+					}else if (bit==3){
+						 window.location.assign("https://educational-times.herokuapp.com//journals/tabs/" + p + '/' + svalue)
+					}else{
+						 window.location.assign("https://educational-times.herokuapp.com//journals/tabs/" + p)
+					}
+				}
+				
+				function links() {
+    //var x = document.getElementById("mytab1").rows.length;
+    //var i =1;
+    //for(i=1;i<x;i++){
+    	
+    //	var y=document.getElementById("mytab1").rows[i].cells.item(5).innerHTML;
+	//	document.getElementById("mytab1").rows[i].cells.item(5).innerHTML = ""
+	//	a=y.split(" ");
+	//	var index;
+	//	for( index=0; index<a.length; index++){
+		
+	//		if(!a[index].includes("xx"))
+	//			document.getElementById("mytab1").rows[i].cells.item(5).innerHTML += "<a href=\"https://www.google.com/search?q=%22the+educational+times%22+vol+"+a[index]+"&oq=%22the+educational+times%22+vol+"+a[index]+"&aqs=chrome.0.69i59.6693j0j7&sourceid=chrome&ie=UTF-8\">"+a[index]+"</a>";
+	//		else
+	//			document.getElementById("mytab1").rows[i].cells.item(5).innerHTML += a[index];
+	//	}
+    //}
+				}
+				
+				function search(){
+					var x = document.getElementById("mySearch").value;
+					if(x != '')
+						window.location.assign("https://educational-times.herokuapp.com//journals/tabs/0/" + x)
+				}
+				
+				document.getElementById("mySearch").addEventListener("keyup", function(event) {
+					event.preventDefault();
+					if (event.keyCode == 13) {
+						document.getElementById("searchButton").click();
+					}
+				});
+				
+				document.getElementById("defaultOpen").click();
+				
+				document.getElementById("etvol").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("etvol2").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("etdate").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("etdate2").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("proposer").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("solver").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("solvol").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("solvol2").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("soldate").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("soldate2").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("mqvol").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("mqvol2").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("qtype").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("id").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				document.getElementById("unsolved").addEventListener("keyup", function(event) {
+					event.preventDefault();
+			   		if (event.keyCode == 13) {
+				  		advSearch();
+			   		}
+		   		});
+				
+				 function advSearch(){
+					var etvol = document.getElementById("etvol").value
+					var etvol2 = document.getElementById("etvol2").value
+					var etdate = document.getElementById("etdate").value
+					var etdate2 = document.getElementById("etdate2").value
+					var proposer = document.getElementById("proposer").value
+					var solver = document.getElementById("solver").value
+					var solvol = document.getElementById("solvol").value
+					var solvol2 = document.getElementById("solvol2").value
+					var soldate = document.getElementById("soldate").value
+					var soldate2 = document.getElementById("soldate2").value
+					var mqvol = document.getElementById("mqvol").value
+					var mqvol2 = document.getElementById("mqvol2").value
+					var qtype = document.getElementById("qtype").value
+					var id = document.getElementById("id").value
+					var un = document.getElementById("unsolved").checked
+					if(id == "")
+						id = "zyx"
+					if(etvol == "")
+						etvol = "zyx"
+					if(etvol2 == "")
+						etvol2 = "zyx"
+					if(etdate == "")
+						etdate = "zyx"
+					if(etdate2 == "")
+						etdate2 = "zyx"
+					if(proposer == "")
+						proposer = "zyx"
+					if(solver == "")
+						solver = "zyx"
+					if(solvol == "")
+						solvol = "zyx"
+					if(solvol2 == "")
+						solvol2 = "zyx"
+					if(soldate == "")
+						soldate = "zyx"
+					if(soldate2 == "")
+						soldate2 = "zyx"
+					if(mqvol == "")
+						mqvol = "zyx"
+					if(mqvol2 == "")
+						mqvol2 = "zyx"
+					if(qtype == "")
+						qtype = "zyx"
+					if(un == false)
+						un = "zyx"
+					window.location.assign("https://educational-times.herokuapp.com//journals/tabs/0/" + id + "/" +etvol+ "/" +etvol2+ "/" +etdate+ "/" +etdate2+ "/" +proposer+ "/" +solver+ "/" +solvol+ "/" +solvol2+"/" +soldate+"/" +soldate2+ "/" +mqvol+ "/" +mqvol2+ "/" +qtype+"/"+un)
+				}
+			</script>
+		</head>
+		
+		{% endblock %}
+	 </body>
+</html>
