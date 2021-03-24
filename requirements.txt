@@ -25,7 +25,7 @@ pycurl==7.19.3
 pyserial==2.6
 plotly==2.0
 requests==2.2.1
-rsa==3.4.2
+rsa==4.1
 six==1.10.0
 ssh-import-id==3.21
 uritemplate==3.0.0
