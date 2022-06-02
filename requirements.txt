@@ -9,7 +9,7 @@ configobj==4.7.2
 crcmod==1.7
 google-api-python-client==1.6.2
 gspread==0.6.2
-html5lib==0.999
+html5lib==0.99999999
 httplib2==0.10.3
 itsdangerous==0.24
 jsonpatch==1.3
